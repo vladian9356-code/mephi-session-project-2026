@@ -1,0 +1,28 @@
+=== FINAL DAC/ACL TEST ===
+PASS: user1 creates file
+PASS: user2 modifies file
+PASS: user3 modifies file
+Created by user1
+Modified by user2
+Modified by user3
+PASS: curator1 can read
+sh: строка 1: /data/mephi-2026/_mephi_final_test.txt: Отказано в доступе
+PASS: curator1 cannot write
+Created by user1
+Modified by user2
+Modified by user3
+PASS: curator2 can read
+sh: строка 1: /data/mephi-2026/_mephi_final_test.txt: Отказано в доступе
+PASS: curator2 cannot write
+cat: /data/mephi-2026/_mephi_final_test.txt: Отказано в доступе
+PASS: outsider cannot read
+=== FILE ACL ===
+# file: /data/mephi-2026/_mephi_final_test.txt
+# owner: user1
+# group: project-team
+user::rw-
+group::rwx	#effective:rw-
+group:curators:r-x	#effective:r--
+mask::rw-
+other::---
+

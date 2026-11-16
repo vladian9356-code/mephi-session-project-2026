@@ -1,0 +1,48 @@
+status	section	details
+PASS	dhcp	enp0s5 uses ipv4.method=auto
+PASS	hostname	mephi-2026.domain.local
+WARN	ping	8.8.8.8 unreachable or ICMP filtered; check ping.out
+PASS	upgrade	dnf upgrade successful
+PASS	tcpdump-rpm	Installed local RPM tcpdump-4.99.5-1.red80.aarch64.rpm
+PASS	user1	UID migrated to 5501
+PASS	dac	SGID + inherited ACL on /data/mephi-2026; curators read-only
+PASS	passwords	pwquality minimum 12 + chage maximum 90 (PAM module present)
+WARN	passwords	Set strong passwords manually: sudo passwd user1, user2, user3, curator1, curator2 (new accounts are initially locked)
+WARN	dac-test	One or more test conditions failed; read dac-test.out
+PASS	disk	/dev/sdb1 ext4   /mephi-web, label MEPHI_WEB
+PASS	selinux	Persistent httpd_sys_content_t context applied on /mephi-web
+PASS	nginx	nginx running; enabled at startup
+PASS	curl	HTTP 200; exact Student ID page returned
+SKIP	tcpdump-caps	Optional elevated tcpdump privileges NOT enabled; use --enable-capture after review
+SKIP	console-policy	PAM console deny for curators not enabled; requires explicit opt-in
+PASS	evidence	Created report files in /home/parallels/mephi-session-project-2026; no /etc/shadow collected
+PASS	evidence	Created report files in /home/parallels/mephi-session-project-2026; no /etc/shadow collected
+PASS	hostname	mephi-2026.domain.local
+PASS	dhcp	ipv4.method=auto
+PASS	user1	UID 5501
+PASS	user2	UID 5502
+PASS	user3	UID 5503
+PASS	curators	GID 4444
+PASS	selinux	Enforcing
+PASS	disk	/dev/sdb1 ext4   rw,relatime,seclabel
+PASS	nginx	enabled at boot
+PASS	nginx-active	running
+PASS	curl	Exact web page returned
+PASS	dac	Inherited curators ACL exists
+WARN	screenshot	Manually save mephi-screenshot.png displaying actual curl response
+WARN	history	Export and review interactive history manually (history -a; history > history.out)
+PASS	evidence	Created report files in /home/parallels/mephi-session-project-2026; no /etc/shadow collected
+PASS	hostname	mephi-2026.domain.local
+PASS	dhcp	ipv4.method=auto
+PASS	user1	UID 5501
+PASS	user2	UID 5502
+PASS	user3	UID 5503
+PASS	curators	GID 4444
+PASS	selinux	Enforcing
+PASS	disk	/dev/sdb1 ext4   rw,relatime,seclabel
+PASS	nginx	enabled at boot
+PASS	nginx-active	running
+PASS	curl	Exact web page returned
+PASS	dac	Inherited curators ACL exists
+PASS	screenshot	mephi-screenshot.png exists (visually inspect it before submission)
+PASS	history	history.out exists (must review for credentials)

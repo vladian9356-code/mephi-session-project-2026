@@ -1,0 +1,2 @@
+ноя 16 21:49:38 mephi-2026.domain.local gdm-password][57925]: pam_access(gdm-password:account): access denied for user `curator1' from `tty1'
+ноя 16 21:49:46 mephi-2026.domain.local gdm-password][57957]: pam_access(gdm-password:account): access denied for user `curator1' from `tty1'

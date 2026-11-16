@@ -1,0 +1,162 @@
+    1  ls
+    2  pwd
+    3  reboot
+    4  sudo -i
+    5  
+    6  \
+    7  cat /etc/os-release
+    8  whoami
+    9  id
+   10  sudo -v
+   11  getent passwd user1
+   12  getent passwd 1234
+   13  getent group students
+   14  whoami
+   15  passwd
+   16  учше
+   17  exit
+   18  whoami
+   19  cat /etc/os-release
+   20  pwd
+   21  sudo groupadd students
+   22  учше
+   23  exit
+   24  sudo groupadd students
+   25  getent group students
+   26  getent passwd user1
+   27  getent passwd 1234
+   28  sudo useradd -m -u 1234 -g students -s /bin/bash user1
+   29  id user1
+   30  getent passwd user1
+   31  ls -ld /home/user1
+   32  sudo useradd -m -u 1234 -g students -s /bin/bash user1
+   33  id user1
+   34  getent passwd user1
+   35  ls -ld /home/user1
+   36  sudo passwd user1
+   37  sudo chage -M 90 user1
+   38  sudo chage -l user1
+   39  sudo passwd -S user1
+   40  sudo passwd user1
+   41  sudo chage -M 90 user1
+   42  sudo chage -l user1
+   43  sudo passwd -S user1
+   44  sudo find / -type f -perm -4000 2>/dev/null
+   45  [200~ps -eo pid,ruid,euid,comm~
+   46  ps -eo pid,ruid,euid,comm
+   47  ps -eo pid,ruid,euid,comm | awk 'NR==1 || ($3==0 && $2>=1000 && $2<65534)' | tee ~/privileged-processes.out
+   48  ps -eo pid,ruid,euid,comm | grep '[p]asswd'
+   49  cat /etc/os-release
+   50  hostnamectl
+   51  nmcli connection show --active
+   52  lsblk -o NAME,SIZE,TYPE,FSTYPE,MOUNTPOINTS
+   53  id user1
+   54  getenforce
+   55  scp ~/Downloads/mephi_session_redos8.sh parallels@10.211.55.20:/home/parallels/
+   56  ls
+   57  cd /home/parallels
+   58  bash mephi_session_redos8.sh --check
+   59  cd /home/parallels
+   60  ls -l
+   61  cd ..
+   62  ls
+   63  cd parallels/
+   64  ls
+   65  '/media/psf/Home/Desktop/mephi_session_redos8.sh' 
+   66  cd /media/psf/Home/Desktop/
+   67  ls
+   68  bash mephi_session_redos8.sh --check
+   69  sudo poweroff
+   70  [200~lsblk -o NAME,SIZE,TYPE,FSTYPE,MOUNTPOINTS~
+   71  lsblk -o NAME,SIZE,TYPE,FSTYPE,MOUNTPOINTS
+   72  bash mephi_session_redos8.sh
+   73  sudo poweroff
+   74  sudo bash mephi_session_redos8_v2.sh --apply   --migrate-user1   --disk /dev/sdb   --set-passwords   --enable-capture   --enable-console-policy
+   75  bash -n mephi_session_redos8_v2.sh
+   76  lsblk -o NAME,SIZE,TYPE,FSTYPE,MOUNTPOINTS
+   77  bash mephi_session_redos8_v2.sh --check
+   78  sudo wipefs -n /dev/sdb
+   79  sudo bash ./mephi_session_redos8_v2.sh --apply --migrate-user1 --disk /dev/sdb
+   80  sudo cat ~/mephi-session-project-2026/evidence/dac-test.out
+   81  lsblk -o NAME,SIZE,TYPE,FSTYPE,MOUNTPOINTS
+   82  sudo wipefs -n /dev/sdb
+   83  sudo bash mephi_session_redos8_v2_1.sh --resume --disk /dev/sdb
+   84  ls -ldZ /data /data/mephi-2026
+   85  namei -l /data/mephi-2026
+   86  id user1
+   87  id user2
+   88  id user3
+   89  id curator1
+   90  id curator2
+   91  sudo getfacl -p /data/mephi-2026
+   92  sudo ausearch -m AVC,USER_AVC -ts recent | tail -n 30
+   93  sudo setfacl -m g:project-team:--x,g:curators:--x /data
+   94  sudo getfacl -p /data
+   95  sudo -u user1 sh -c 'echo "Created by user1" > /data/mephi-2026/_mephi_acl_test.txt'
+   96  sudo -u user2 sh -c 'echo "Modified by user2" >> /data/mephi-2026/_mephi_acl_test.txt'
+   97  sudo -u curator1 cat /data/mephi-2026/_mephi_acl_test.txt
+   98  sudo -u curator1 sh -c 'echo "Unauthorized" >> /data/mephi-2026/_mephi_acl_test.txt'
+   99  sudo getfacl -p /data/mephi-2026/_mephi_acl_test.txt
+  100  cp ~/mephi-session-project-2026/evidence/dac-test.out ~/mephi-session-project-2026/evidence/dac-test-before-fix.out
+  101  sudo getfacl -p /data /data/mephi-2026 /data/mephi-2026/_mephi_acl_test.txt | tee ~/mephi-session-project-2026/evidence/dac-acl-final.out
+  102  sudo stat /data/mephi-2026 /data/mephi-2026/_mephi_acl_test.txt >> ~/mephi-session-project-2026/evidence/stat.out
+  103  ls -lh ~/mephi-session-project-2026/evidence/dac*
+  104  command -v tcpdump
+  105  ls -l "$(command -v tcpdump)"
+  106  sudo getcap "$(command -v tcpdump)"
+  107  sudo chgrp project-team /usr/sbin/tcpdump
+  108  sudo chmod 750 /usr/sbin/tcpdump
+  109  sudo setcap cap_net_raw=ep /usr/sbin/tcpdump
+  110  sudo getcap /usr/sbin/tcpdump
+  111  sudo -u user1 /usr/sbin/tcpdump -D
+  112  sudo -u user1 timeout 12s /usr/sbin/tcpdump -i lo -nn -p -c 1 'tcp port 80' & pid=$!; sleep 2; curl -s http://127.0.0.1/ >/dev/null; wait "$pid"; echo "tcpdump exit=$?"
+  113  sudo getcap /usr/sbin/tcpdump | tee ~/mephi-session-project-2026/evidence/getcap.out
+  114  for u in user1 user2 user3 curator1 curator2; do   sudo passwd -S "$u"; done
+  115  sudo grep -nE 'pam_access|^account|system-auth|password-auth' /etc/pam.d/login
+  116  authselect current
+  117  systemctl status display-manager --no-pager
+  118  printf '%s\n' '- : curator1 curator2 : ALL' | sudo tee /etc/security/mephi-local-login.conf
+  119  cat /etc/security/mephi-local-login.conf
+  120  sudo sed -n '1,100p' /etc/pam.d/gdm-password
+  121  sudo sed -n '1,70p' /etc/pam.d/login
+  122  ls -l /usr/lib64/security/pam_access.so
+  123  sudo grep -n 'pam_pwquality.so' /etc/pam.d/system-auth
+  124  sudo grep -RniE '^[[:space:]]*minlen[[:space:]]*=' /etc/security/pwquality.conf /etc/security/pwquality.conf.d/ 2>/dev/null
+  125  sudo cp -an /etc/pam.d/login /etc/pam.d/login.mephi.bak
+  126  sudo cp -an /etc/pam.d/gdm-password /etc/pam.d/gdm-password.mephi.bak
+  127  sudo sed -i '/^account[[:space:]]*required[[:space:]]*pam_nologin\.so/a account required pam_access.so accessfile=/etc/security/mephi-local-login.conf' /etc/pam.d/login
+  128  sudo sed -i '/^account[[:space:]]*required[[:space:]]*pam_nologin\.so/a account required pam_access.so accessfile=/etc/security/mephi-local-login.conf' /etc/pam.d/gdm-password
+  129  sudo restorecon -v /etc/pam.d/login /etc/pam.d/gdm-password
+  130  sudo grep -n 'pam_access.so' /etc/pam.d/login /etc/pam.d/gdm-password
+  131  ls /etc/pam.d/gdm-*
+  132  sudo grep -nE '^(auth|account)' /etc/pam.d/gdm-fingerprint /etc/pam.d/gdm-smartcard /etc/pam.d/gdm-autologin
+  133  sudo grep -nEi 'AutomaticLogin|TimedLogin' /etc/gdm/custom.conf
+  134  sudo grep -n 'pam_access.so'   /etc/pam.d/login   /etc/pam.d/gdm-password   /etc/pam.d/gdm-fingerprint   /etc/pam.d/gdm-smartcard   /etc/pam.d/gdm-autologin
+  135  for service in gdm-fingerprint gdm-smartcard gdm-autologin; do     file="/etc/pam.d/$service";      sudo cp -an "$file" "$file.mephi.bak";      if ! sudo grep -Fq       'pam_access.so accessfile=/etc/security/mephi-local-login.conf' "$file"; then         sudo sed -i           '/^account[[:space:]]*required[[:space:]]*pam_nologin\.so/a account required pam_access.so accessfile=/etc/security/mephi-local-login.conf'           "$file";     fi;      sudo restorecon "$file"; done
+  136  sudo grep -n 'pam_access.so'   /etc/pam.d/login   /etc/pam.d/gdm-password   /etc/pam.d/gdm-fingerprint   /etc/pam.d/gdm-smartcard   /etc/pam.d/gdm-autologin
+  137  sudo passwd user2
+  138  sudo passwd user3
+  139  sudo passwd curator1
+  140  sudo passwd curator2
+  141  for u in user1 user2 user3 curator1 curator2; do     sudo passwd -S "$u"; done
+  142  {   echo "=== PAM access policy ===";   sudo cat /etc/security/mephi-local-login.conf;    echo "=== PAM services ===";   sudo grep -n 'pam_access.so'     /etc/pam.d/login     /etc/pam.d/gdm-password     /etc/pam.d/gdm-fingerprint     /etc/pam.d/gdm-smartcard     /etc/pam.d/gdm-autologin;    echo "=== Minimum password length ===";   sudo cat /etc/security/pwquality.conf.d/90-mephi-session.conf;    echo "=== Password status ===";   for u in user1 user2 user3 curator1 curator2; do     sudo passwd -S "$u";   done; } | tee ~/mephi-session-project-2026/evidence/pam-password-final.out
+  143  sudo bash ~/Desktop/mephi_session_redos8_v2_1.sh --verify
+  144  sudo journalctl -b --since "15 minutes ago" --no-pager   | grep -Ei 'pam_access|access denied|gdm-password'   | tail -n 30
+  145  sudo bash ~/Desktop/mephi_session_redos8_v2_1.sh --verify
+  146  findmnt /mephi-web
+  147  getenforce
+  148  systemctl is-enabled nginx
+  149  systemctl is-active nginx
+  150  curl -s http://localhost/
+  151  sudo getcap /usr/sbin/tcpdump
+  152  pwd
+  153  ls -l mephi_session_redos8_v2_1.sh
+  154  sudo bash ./mephi_session_redos8_v2_1.sh --verify
+  155  sudo journalctl -b --no-pager   | grep 'pam_access(gdm-password:account).*curator1'   | tail -n 10   | tee ~/mephi-session-project-2026/evidence/pam-denial-final.out
+  156  FILE=/data/mephi-2026/_mephi_final_test.txt
+  157  LOG="$HOME/mephi-session-project-2026/evidence/dac-test-final.out"
+  158  {   echo "=== FINAL DAC/ACL TEST ===";    if sudo -u user1 sh -c "echo 'Created by user1' > '$FILE'"; then     echo "PASS: user1 creates file";   else     echo "FAIL: user1 creates file";   fi;    if sudo -u user2 sh -c "echo 'Modified by user2' >> '$FILE'"; then     echo "PASS: user2 modifies file";   else     echo "FAIL: user2 modifies file";   fi;    if sudo -u user3 sh -c "echo 'Modified by user3' >> '$FILE'"; then     echo "PASS: user3 modifies file";   else     echo "FAIL: user3 modifies file";   fi;    for user in curator1 curator2; do     if sudo -u "$user" cat "$FILE"; then       echo "PASS: $user can read";     else       echo "FAIL: $user cannot read";     fi;      if sudo -u "$user" sh -c "echo 'Unauthorized' >> '$FILE'"; then       echo "FAIL: $user can write";     else       echo "PASS: $user cannot write";     fi;   done;    if sudo -u parallels cat "$FILE"; then     echo "FAIL: outsider can read";   else     echo "PASS: outsider cannot read";   fi;    echo "=== FILE ACL ===";   sudo getfacl -p "$FILE";  } > "$LOG" 2>&1
+  159  cat "$LOG"
+  160  EVID="$HOME/mephi-session-project-2026/evidence"
+  161  history -a
+  162  history > "$EVID/history.out"

@@ -1,0 +1,10 @@
+DAC test of users and curators (temporary project file)
+sh: строка 1: /data/mephi-2026/_mephi_acl_test.txt: Отказано в доступе
+FAIL: user1 cannot create file
+sh: строка 1: /data/mephi-2026/_mephi_acl_test.txt: Отказано в доступе
+FAIL: user2 cannot modify teammate file
+cat: /data/mephi-2026/_mephi_acl_test.txt: Отказано в доступе
+FAIL: curator1 cannot read file
+sh: строка 1: /data/mephi-2026/_mephi_acl_test.txt: Отказано в доступе
+PASS: curator1 was denied write access
+FAIL: test file was not created; inspect group permissions, ACL and SELinux

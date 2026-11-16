@@ -1,0 +1,40 @@
+NAME="RED OS"
+VERSION="8.0.3"
+PLATFORM_ID="platform:red80"
+ID="redos"
+ID_LIKE="rhel centos fedora"
+VERSION_ID="8.0.3"
+PRETTY_NAME="RED OS 8.0.3 (Standard Desktop)"
+ANSI_COLOR="0;31"
+CPE_NAME="cpe:/o:redos:redos:8"
+HOME_URL="https://redos.red-soft.ru"
+BUG_REPORT_URL="https://support.red-soft.ru"
+EDITION="Standard"
+
+ Static hostname: mephi-2026.domain.local
+       Icon name: computer-vm
+         Chassis: vm 🖴
+      Machine ID: 9303c3f11d804dbca4506414bc6b9d01
+         Boot ID: fcab802186fa4f178368b2879d6d1bd8
+  Virtualization: parallels
+Operating System: RED OS 8.0.3 (Standard Desktop)
+     CPE OS Name: cpe:/o:redos:redos:8
+          Kernel: Linux 6.12.113-1.red80.aarch64
+    Architecture: arm64
+ Hardware Vendor: Parallels International GmbH.
+  Hardware Model: Parallels ARM Virtual Machine
+Firmware Version: 26.3.3 (57507)
+NAME    UUID                                  TYPE      DEVICE 
+enp0s5  42282fbd-ce42-3e40-acb8-469ba159b8da  ethernet  enp0s5 
+lo      2183cafe-3b35-4ff2-9f08-844f1ac35ce6  loopback  lo     
+NAME    SIZE TYPE FSTYPE MOUNTPOINTS
+sda      64G disk        
+├─sda1  600M part vfat   /boot/efi
+├─sda2    1G part ext4   /boot
+├─sda3    2G part swap   [SWAP]
+├─sda4 40,6G part ext4   /
+└─sda5 19,8G part ext4   /home
+sdb      10G disk        
+└─sdb1   10G part ext4   /mephi-web
+sr0    1024M rom         
+zram0     8G disk        [SWAP]
